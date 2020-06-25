@@ -1,0 +1,190 @@
+import kotlinx.html.*
+import kotlinx.html.stream.appendHTML
+import java.io.File
+import java.io.PrintStream
+import java.nio.file.Files
+
+const val isRelease = true
+
+fun main() {
+    val folder = File("html")
+    folder.mkdir()
+
+    createIndexHtmlFile()
+    minifyCss()
+}
+
+private fun createIndexHtmlFile() {
+    val file = File("html/index.html")
+    file.delete()
+    val stream = PrintStream(file)
+
+    stream.appendln("<!DOCTYPE html>")
+    stream.appendHTML().html {
+        lang = "en"
+        head {
+            title("Simon Schubert")
+            meta(name = "viewport", content = "width=device-width, initial-scale=1")
+            link(rel = "icon", type = "image/png", href="images/icon.png")
+            styleLink("stylesheet.css")
+        }
+        body {
+            div {
+                classes = setOf("header")
+                h1 {
+                    text("Simon Schubert".toUpperCase())
+                }
+                div {
+                    classes = setOf("profile-cover-wrapper")
+                    div {
+                        classes = setOf("profile-cover")
+                    }
+                }
+                div {
+                    classes = setOf("logos")
+                    logo("https://github.com/SimonSchubert", "Github", "logo-github")
+                    logo("https://apps.apple.com/us/developer/simon-schubert/id1219649975", "Apple App Store", "logo-appstore")
+                    logo("https://play.google.com/store/apps/dev?id=6329838572979012158", "Google Play Store", "logo-googleplay")
+                    logo("mailto:sschubert89@gmail.com", "E-Mail", "logo-email")
+                }
+            }
+            div {
+                classes = setOf("content")
+                span {
+                    text("A wise man whispered to me that personal blogs and websites became cool again. To be in total control of your content instead of relying on the algorithm of Facebook and instagram. Just like we had been before the facebook era.".toUpperCase())
+                }
+                p {
+                    text("A little bit more about me: I live in Germany, Berlin - love bouldering, biking and traveling - develop mobile apps since ~2010 - CSS and HTML are not my super powers but lately I started enjoying building static websites - also I truly believe that the world would be a better place if we would invest more into Open Source software.".toUpperCase())
+                }
+                headline("Projects")
+                div {
+                    classes = setOf("projects")
+                    project("project-linux.png", "Linux Command Library", "https://linuxcommandlibrary.com/")
+                    project("project-darwin.jpg", "Darwin Command Library", "https://apps.apple.com/us/app/darwin-command-library/id1478951256")
+                    project("project-quiz.jpg", "2 Player Quiz", "https://play.google.com/store/apps/details?id=com.inspiredandroid.twoplayerquizultimate&hl=en_US")
+                    project("project-ancient.jpg", "Ancient Genocide", "https://play.google.com/store/apps/details?id=com.inspiredandroid.ancientgenocide&hl=en_US")
+                    project("project-genocide.png", "Orc Genocide", "https://play.google.com/store/apps/details?id=com.inspiredandroid.orcgenocide&hl=en_US")
+                    project("project-whatch.png", "Whatch.online", "http://whatch.online")
+                }
+                headline("Places")
+                div {
+                    div {
+                        classes = setOf("map-legend")
+                        div{
+                            classes = setOf("map-hadbeen")
+                            text("had been")
+                        }
+                        div {
+                            text("want to be")
+                        }
+                    }
+                    img {
+                        classes = setOf("map")
+                        src = "images/world.svg"
+                    }
+                }
+                headline("Photos")
+                div {
+                    classes = setOf("photos")
+                    photo("trip-morroco", "Morocco - Desert")
+                    photo("trip-greece-santorini", "Greece - Santorini")
+                    photo("trip-portugal-lisbon", "Portugal - Lisbon")
+                    photo("trip-italy-florence", "Italy - Florence")
+                    photo("trip-bali", "Bali")
+                    photo("trip-usa-sanfrancisco", "USA - San Francisco")
+                    photo("trip-iceland", "Iceland")
+                    photo("trip-turkey-cappadocia", "Turkey - Cappadocia")
+                    photo("trip-turkey-istanbul", "Turkey - Istanbul")
+                    photo("trip-montenegro", "Montenegro")
+                }
+
+                footer {
+                    p {
+                        text(
+                            "Simon Schubert, " +
+                                    "Sonnenallee. 29, " +
+                                    "12047 Berlin"
+                        )
+                    }
+                }
+            }
+        }
+    }
+    stream.close()
+}
+
+fun FlowContent.photo(imageId: String, t: String) {
+    div {
+        classes = setOf("photo")
+        a("images/trips/$imageId.jpg") {
+            target = ATarget.blank
+            img {
+                src = "images/trips/small/$imageId.jpg"
+            }
+        }
+        br
+        span {
+            text(t.toUpperCase())
+        }
+    }
+}
+
+fun FlowContent.headline(title: String) {
+    a("#${title.toLowerCase()}") {
+        id = title.toLowerCase()
+        h2 {
+            text(title.toUpperCase())
+        }
+    }
+}
+
+fun FlowContent.project(imgSrc: String, t: String, href: String) {
+    div {
+        classes = setOf("project")
+        a(href) {
+            target = ATarget.blank
+            img {
+                src = "images/$imgSrc"
+                title = t
+            }
+        }
+    }
+}
+
+fun FlowContent.logo(href: String, t: String, imgSrc: String) {
+    a(href) {
+        target = ATarget.blank
+        title = t
+        div {
+            classes = setOf(imgSrc)
+        }
+    }
+}
+
+fun String.minifyCSS(): String {
+    return replaceWhiteSpacesBeforeAndAfter(";")
+        .replaceWhiteSpacesBeforeAndAfter("}")
+        .replaceWhiteSpacesBeforeAndAfter("\\{")
+        .replaceWhiteSpacesBeforeAndAfter(":")
+        .replaceWhiteSpacesBeforeAndAfter(",")
+}
+
+fun String.replaceWhiteSpacesBeforeAndAfter(value: String): String {
+    return replace("\\s*$value\\s*".toRegex(), value)
+}
+
+fun minifyCss() {
+    val stylesheets = File("src/main/resources/stylesheets")
+    stylesheets.listFiles()?.forEach {
+        if (it.isFile) {
+            val file = File("html", it.name)
+            file.delete()
+            if (isRelease) {
+                val minified = it.readText().minifyCSS()
+                file.writeText(minified)
+            } else {
+                Files.createLink(file.toPath(), it.toPath())
+            }
+        }
+    }
+}
