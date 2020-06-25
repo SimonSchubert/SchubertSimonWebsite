@@ -1,0 +1,214 @@
+@font-face{font-family:anton;src:url(Anton-Regular.ttf);}
+
+html, body {
+font-family:anton,monospace;
+margin:0;
+color: #262626;
+}
+
+a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+color: #262626;
+}
+
+a:hover, .photo img:hover, .project img:hover {
+transform: scale(1.05);
+}
+
+.header {
+width: 100%;
+height: 250px;
+background: url(images/background.jpg) no-repeat center center;
+background-size: cover;
+border-bottom: #262626 5px solid;
+}
+
+.profile-cover {
+background: url(images/cover.jpg) no-repeat center center;
+background-size: cover;
+width: 200px;
+height: 200px;
+border-radius: 50%;
+-moz-border-radius: 50%;
+-khtml-border-radius: 50%;
+-webkit-border-radius: 50%;
+}
+
+.profile-cover:hover {
+    -webkit-animation:spin 0.5s linear infinite;
+    -moz-animation:spin 0.5s linear infinite;
+    animation:spin 0.5s linear infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+.profile-cover-wrapper {
+border-radius: 50%;
+-moz-border-radius: 50%;
+-khtml-border-radius: 50%;
+-webkit-border-radius: 50%;
+width: 200px;
+height: 200px;
+position: absolute;
+top: 150px;
+left: 10%;
+padding: 5px;
+background: #262626;
+}
+
+.logo-lbry {
+background: url(images/logo-lbry.svg) no-repeat center center;
+height: 20px;
+width: 60px;
+}
+
+.logo-github {
+background: url(images/logo-github.svg) no-repeat center center;
+height: 30px;
+width: 30px;
+}
+
+.logo-email {
+background: url(images/logo-email.svg) no-repeat center center;
+height: 30px;
+width: 30px;
+}
+
+.logo-googleplay {
+background: url(images/logo-google_play.svg) no-repeat center center;
+height: 30px;
+width: 30px;
+}
+
+.logo-appstore {
+background: url(images/logo-apple_app_store.svg) no-repeat center center;
+height: 30px;
+width: 30px;
+}
+
+.logos {
+left: calc(10% + 220px);
+position: absolute;
+display: flex;
+flex-wrap: wrap;
+top: 305px;
+grid-gap: 8px;
+}
+
+.map {
+width: 100%;
+}
+
+.map-legend {
+position: absolute;
+}
+
+.map-hadbeen {
+color: #ea4f52;
+}
+
+.content {
+top: 120px;
+position: relative;
+margin-left: 10%;
+margin-right: 10%;
+}
+
+.projects {
+display: flex;
+flex-wrap: wrap;
+}
+
+.project img {
+border-radius: 25px;
+height: 80px;
+margin-right: 10px;
+}
+
+.photo {
+border: 5px #262626 solid;
+text-align: center;
+font-size: 18px;
+padding-left: 12px;
+padding-right: 12px;
+padding-bottom: 4px;
+width: 100%;
+box-sizing: border-box;
+margin: 0;
+margin-bottom: 0px;
+-webkit-column-break-inside: avoid;
+page-break-inside: avoid;
+break-inside: avoid-column;
+display: table;
+margin-bottom: 15px;
+}
+
+.photo img {
+width: 100%;
+margin-top: 12px;
+}
+
+.content h2 {
+width: calc(100% - 20px);
+margin-top: 25px;
+margin-bottom: 15px;
+background: #d7d5d5;
+padding-left: 20px;
+}
+
+h1 {
+position: absolute;
+margin: 0;
+top: 260px;
+left: calc(10% + 220px);
+}
+
+h2 {
+margin:0;
+}
+
+.photos{
+    -webkit-column-width:200px;
+    -moz-column-width:200px;
+    column-width:200px;
+    -webkit-column-gap:10px;
+    -moz-column-gap:10px;
+    column-gap:15px;
+    margin-left:15px;
+    margin-right:15px;
+}
+
+footer {
+text-align: center;
+}
+
+@media only screen and (max-width: 540px) {
+  .profile-cover-wrapper {
+  left: 15px;
+  }
+  .logos, h1 {
+  left: 150px;
+  }
+  h1 {
+  top: 190px;
+  }
+  .logos {
+  top: 230px;
+  }
+  .content {
+  margin-left: 15px;
+  margin-right: 15px;
+  top: 90px;
+  }
+  .profile-cover, .profile-cover-wrapper {
+  width: 120px;
+  height: 120px;
+  }
+  .profile-cover-wrapper {
+    top: 120px;
+  }
+  .header {
+  height: 180px;
+  }
+}
