@@ -4,6 +4,10 @@ import java.io.File
 import java.io.PrintStream
 import java.nio.file.Files
 
+// exiftool -all= *.jpg
+// mogrify -resize 1024 *.jpg
+// mogrify -resize 400 *.jpg
+
 const val isRelease = true
 
 fun main() {
@@ -96,6 +100,10 @@ private fun createIndexHtmlFile() {
                     photo("trip-turkey-cappadocia", "Turkey - Cappadocia")
                     photo("trip-turkey-istanbul", "Turkey - Istanbul")
                     photo("trip-montenegro", "Montenegro")
+                    photo("trip-belgium-brussels", "Belgium - Brussels")
+                    photo("trip-germany-potsdam", "Germany - Potsdam")
+                    photo("trip-germany-wegberg", "Germany - Wegberg")
+                    photo("trip-poland-warsaw", "Poland - Warsaw")
                 }
 
                 footer {
