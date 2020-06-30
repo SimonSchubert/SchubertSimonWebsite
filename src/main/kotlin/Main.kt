@@ -35,6 +35,9 @@ private fun createIndexHtmlFile() {
         body {
             div {
                 classes = setOf("header")
+                div {
+                    classes = setOf("background")
+                }
                 h1 {
                     text("Simon Schubert".toUpperCase())
                 }
@@ -103,8 +106,23 @@ private fun createIndexHtmlFile() {
                     photo("trip-belgium-brussels", "Belgium - Brussels")
                     photo("trip-germany-potsdam", "Germany - Potsdam")
                     photo("trip-germany-wegberg", "Germany - Wegberg")
+                    photo("trip-germany-havel", "Germany - Havel")
                     photo("trip-poland-warsaw", "Poland - Warsaw")
+                    photo("trip-finland-helsinki", "Finland - Helsinki")
+                    photo("trip-spain-calp", "Spain - Calp")
                 }
+                headline("Software recommendations")
+                div {
+                    classes = setOf("recommendations")
+                        recommendation("Nextcloud", "https://nextcloud.com", "File storage and productivity platform")
+                        recommendation("Bitwarden", "https://bitwarden.com", "Password manager")
+                        recommendation("Duckduckgo", "https://duckduckgo.com", "Search engine")
+                        recommendation("LBRY", "https://lbry.tv/\$/invite/@simonschubert:d", "Video and content platform")
+                        recommendation("Manjaro", "https://manjaro.org", "Top notch Linux distro")
+                        recommendation("Digital Ocean", "https://www.digitalocean.com/?refcode=8335c6eec62d", "Server hosting")
+                        recommendation("Kotlin", "https://kotlinlang.org", "Programming language")
+                }
+                // headline("Blog")
 
                 footer {
                     p {
@@ -119,6 +137,20 @@ private fun createIndexHtmlFile() {
         }
     }
     stream.close()
+}
+
+fun FlowContent.recommendation(name: String, url: String, description: String) {
+    div {
+        span {
+            a(url) {
+                target = ATarget.blank
+                text(name)
+            }
+        }
+        span {
+            text(description)
+        }
+    }
 }
 
 fun FlowContent.photo(imageId: String, t: String) {
