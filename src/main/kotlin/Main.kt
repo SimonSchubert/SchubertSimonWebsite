@@ -71,7 +71,7 @@ private fun createIndexHtmlFile() {
                     project("project-quiz.jpg", "2 Player Quiz", "https://play.google.com/store/apps/details?id=com.inspiredandroid.twoplayerquizultimate&hl=en_US")
                     project("project-ancient.jpg", "Ancient Genocide", "https://play.google.com/store/apps/details?id=com.inspiredandroid.ancientgenocide&hl=en_US")
                     project("project-genocide.png", "Orc Genocide", "https://play.google.com/store/apps/details?id=com.inspiredandroid.orcgenocide&hl=en_US")
-                    project("project-whatch.png", "Whatch.online", "http://whatch.online")
+                    project("project-whatch.png", "Whatch.online", "https://whatch.online")
                 }
                 headline("Places")
                 div {
@@ -88,28 +88,29 @@ private fun createIndexHtmlFile() {
                     img {
                         classes = setOf("map")
                         src = "images/world.svg"
+                        alt = "World map"
                     }
                 }
                 headline("Photos")
                 div {
                     classes = setOf("photos")
-                    photo("trip-morroco", "Morocco - Desert")
-                    photo("trip-greece-santorini", "Greece - Santorini")
-                    photo("trip-portugal-lisbon", "Portugal - Lisbon")
-                    photo("trip-italy-florence", "Italy - Florence")
-                    photo("trip-bali", "Bali")
-                    photo("trip-usa-sanfrancisco", "USA - San Francisco")
-                    photo("trip-iceland", "Iceland")
-                    photo("trip-turkey-cappadocia", "Turkey - Cappadocia")
-                    photo("trip-turkey-istanbul", "Turkey - Istanbul")
-                    photo("trip-montenegro", "Montenegro")
-                    photo("trip-belgium-brussels", "Belgium - Brussels")
-                    photo("trip-germany-potsdam", "Germany - Potsdam")
-                    photo("trip-germany-wegberg", "Germany - Wegberg")
-                    photo("trip-germany-havel", "Germany - Havel")
-                    photo("trip-poland-warsaw", "Poland - Warsaw")
-                    photo("trip-finland-helsinki", "Finland - Helsinki")
-                    photo("trip-spain-calp", "Spain - Calp")
+                    photo("trip-morroco", "Morocco - Desert", "photo of me next to a donkey")
+                    photo("trip-greece-santorini", "Greece - Santorini", "photo of me with white houses in the background")
+                    photo("trip-portugal-lisbon", "Portugal - Lisbon", "photo of me eating ice cream in a crowded street")
+                    photo("trip-italy-florence", "Italy - Florence", "photo of me and nadira with the skyline of florence in the background")
+                    photo("trip-bali", "Bali", "photo of my legs with the beach and sea in the background")
+                    photo("trip-usa-sanfrancisco", "USA - San Francisco", "photo of me and the golden gate bridge in the background")
+                    photo("trip-iceland", "Iceland", "photo of my forehead and a geyser in the background")
+                    photo("trip-turkey-cappadocia", "Turkey - Cappadocia", "photo of me and rock houses in the background")
+                    photo("trip-turkey-istanbul", "Turkey - Istanbul", "photo of me and the skyline with seagulls in the background")
+                    photo("trip-montenegro", "Montenegro", "photo of me with mountains, city and lake/sea in the background")
+                    photo("trip-belgium-brussels", "Belgium - Brussels", "photo of me eating ice cream in front of Manneken Pis")
+                    photo("trip-germany-potsdam", "Germany - Potsdam", "photo of me with a wind mill in the background")
+                    photo("trip-germany-wegberg", "Germany - Wegberg", "photo of me and nadira sitting on a couch")
+                    photo("trip-germany-havel", "Germany - Havel", "photo from the inside of my tent with a view to the lake")
+                    photo("trip-poland-warsaw", "Poland - Warsaw", "photo of me drinking water on top a tower")
+                    photo("trip-finland-helsinki", "Finland - Helsinki", "photo of me eating ice cream in front of a port")
+                    photo("trip-spain-calp", "Spain - Calp", "photo of me lying on the beach")
                 }
                 headline("Software recommendations")
                 div {
@@ -153,13 +154,14 @@ fun FlowContent.recommendation(name: String, url: String, description: String) {
     }
 }
 
-fun FlowContent.photo(imageId: String, t: String) {
+fun FlowContent.photo(imageId: String, t: String, a: String) {
     div {
         classes = setOf("photo")
         a("images/trips/$imageId.jpg") {
             target = ATarget.blank
             img {
                 src = "images/trips/small/$imageId.jpg"
+                alt = a
             }
         }
         br
@@ -170,8 +172,9 @@ fun FlowContent.photo(imageId: String, t: String) {
 }
 
 fun FlowContent.headline(title: String) {
-    a("#${title.toLowerCase()}") {
-        id = title.toLowerCase()
+    val key = title.toLowerCase().replace(" ", "-")
+    a("#$key") {
+        id = key
         h2 {
             text(title.toUpperCase())
         }
