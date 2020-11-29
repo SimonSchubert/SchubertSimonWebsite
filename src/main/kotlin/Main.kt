@@ -66,12 +66,13 @@ private fun createIndexHtmlFile() {
                 headline("Projects")
                 div {
                     classes = setOf("projects")
+                    project("project-coindodo.png", "coindodo.io", "https://coindodo.io")
+                    project("project-whatch.png", "Whatch.online", "https://whatch.online")
                     project("project-linux.png", "Linux Command Library", "https://linuxcommandlibrary.com/")
                     project("project-darwin.jpg", "Darwin Command Library", "https://apps.apple.com/us/app/darwin-command-library/id1478951256")
                     project("project-quiz.jpg", "2 Player Quiz", "https://play.google.com/store/apps/details?id=com.inspiredandroid.twoplayerquizultimate&hl=en_US")
                     project("project-ancient.jpg", "Ancient Genocide", "https://play.google.com/store/apps/details?id=com.inspiredandroid.ancientgenocide&hl=en_US")
                     project("project-genocide.png", "Orc Genocide", "https://play.google.com/store/apps/details?id=com.inspiredandroid.orcgenocide&hl=en_US")
-                    project("project-whatch.png", "Whatch.online", "https://whatch.online")
                 }
                 headline("Places")
                 div {
@@ -94,8 +95,9 @@ private fun createIndexHtmlFile() {
                 headline("Photos")
                 div {
                     classes = setOf("photos")
-                    photo("trip-morroco", "Morocco - Desert", "photo of me next to a donkey")
+                    photo("trip-morocco", "Morocco - Desert", "photo of me next to a donkey")
                     photo("trip-greece-santorini", "Greece - Santorini", "photo of me with white houses in the background")
+                    photo("trip-greece-corfu", "Greece - Corfu", "photo of me diving")
                     photo("trip-portugal-lisbon", "Portugal - Lisbon", "photo of me eating ice cream in a crowded street")
                     photo("trip-italy-florence", "Italy - Florence", "photo of me and nadira with the skyline of florence in the background")
                     photo("trip-bali", "Bali", "photo of my legs with the beach and sea in the background")
@@ -108,6 +110,7 @@ private fun createIndexHtmlFile() {
                     photo("trip-germany-potsdam", "Germany - Potsdam", "photo of me with a wind mill in the background")
                     photo("trip-germany-wegberg", "Germany - Wegberg", "photo of me and nadira sitting on a couch")
                     photo("trip-germany-havel", "Germany - Havel", "photo from the inside of my tent with a view to the lake")
+                    photo("trip-croatia-dubrovnik", "Croatia - Dubrovnik", "photo of me in front of kings landing")
                     photo("trip-poland-warsaw", "Poland - Warsaw", "photo of me drinking water on top a tower")
                     photo("trip-finland-helsinki", "Finland - Helsinki", "photo of me eating ice cream in front of a port")
                     photo("trip-spain-calp", "Spain - Calp", "photo of me lying on the beach")
@@ -118,7 +121,7 @@ private fun createIndexHtmlFile() {
                         recommendation("Nextcloud", "https://nextcloud.com", "File storage and productivity platform")
                         recommendation("Bitwarden", "https://bitwarden.com", "Password manager")
                         recommendation("Duckduckgo", "https://duckduckgo.com", "Search engine")
-                        recommendation("LBRY", "https://lbry.tv/\$/invite/@simonschubert:d", "Video and content platform")
+                        recommendation("Odysee.com", "https://odysee.com/\$/invite/@simonschubert:d", "Video and content platform")
                         recommendation("Manjaro", "https://manjaro.org", "Top notch Linux distro")
                         recommendation("Digital Ocean", "https://www.digitalocean.com/?refcode=8335c6eec62d", "Server hosting")
                         recommendation("Kotlin", "https://kotlinlang.org", "Programming language")
@@ -128,9 +131,7 @@ private fun createIndexHtmlFile() {
                 footer {
                     p {
                         text(
-                            "Simon Schubert, " +
-                                    "Sonnenallee. 29, " +
-                                    "12047 Berlin"
+                            "Simon Schubert - sschubert89@gmail.com"
                         )
                     }
                 }
