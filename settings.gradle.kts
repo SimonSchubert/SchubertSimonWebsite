@@ -1,2 +1,2 @@
-rootProject.name = "FreeSimon"
+rootProject.name = "Website"
 
