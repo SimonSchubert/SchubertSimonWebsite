@@ -92,6 +92,8 @@ private fun createIndexHtmlFile() {
                 headline("Photos")
                 div {
                     classes = setOf("photos")
+                    photo("trip-south-france", "France - south", "photo of me infront of the sea")
+                    photo("trip-antwerp", "Belgium - Antwerp", "photo of me eating fries")
                     photo("trip-morocco", "Morocco - Desert", "photo of me next to a donkey")
                     photo("trip-greece-santorini", "Greece - Santorini", "photo of me with white houses in the background")
                     photo("trip-greece-corfu", "Greece - Corfu", "photo of me diving")
