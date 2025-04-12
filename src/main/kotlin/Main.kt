@@ -40,7 +40,7 @@ private fun createIndexHtmlFile() {
                     classes = setOf("background")
                 }
                 h1 {
-                    text("Simon Schubert".toUpperCase())
+                    text("Simon Schubert".uppercase())
                 }
                 div {
                     classes = setOf("profile-cover-wrapper")
@@ -51,17 +51,17 @@ private fun createIndexHtmlFile() {
                 div {
                     classes = setOf("logos")
                     logo("https://github.com/SimonSchubert", "Github", "logo-github")
-                    logo("https://apps.apple.com/us/developer/simon-schubert/id1219649975", "Apple App Store", "logo-appstore")
+                    // logo("https://apps.apple.com/us/developer/simon-schubert/id1219649975", "Apple App Store", "logo-appstore")
                     logo("mailto:sschubert89@gmail.com", "E-Mail", "logo-email")
                 }
             }
             div {
                 classes = setOf("content")
                 span {
-                    text("A wise man whispered to me that personal blogs and websites became cool again. To be in total control of your content instead of relying on the algorithm of Facebook and instagram. Just like we had been before the facebook era.".toUpperCase())
+                    text("A wise man whispered to me that personal blogs and websites became cool again. To be in total control of your content instead of relying on the algorithm of Facebook and instagram. Just like we had been before the facebook era.".uppercase())
                 }
                 p {
-                    text("A little bit more about me: I live in Germany, Berlin - love bouldering, biking and traveling - develop mobile apps since ~2010 - CSS and HTML are not my super powers but lately I started enjoying building static websites - also I truly believe that the world would be a better place if we would invest more into Open Source software.".toUpperCase())
+                    text("A little bit more about me: I live in Germany, Berlin - love bouldering, biking and traveling - develop mobile apps since ~2010 - CSS and HTML are not my super powers but lately I started enjoying building static websites - also I truly believe that the world would be a better place if we would invest more into Open Source software.".uppercase())
                 }
                 headline("Projects")
                 div {
@@ -92,7 +92,10 @@ private fun createIndexHtmlFile() {
                 headline("Photos")
                 div {
                     classes = setOf("photos")
-                    photo("trip-south-france", "France - south", "photo of me infront of the sea")
+                    photo("trip-joshua-tree", "USA - Joshua Tree", "")
+                    photo("trip-boerse", "Germany - Goerlitz", "")
+                    photo("trip-sicilia", "Italy - Sicilia", "")
+                    photo("trip-south-france", "France - south", "photo of me in front of the sea")
                     photo("trip-antwerp", "Belgium - Antwerp", "photo of me eating fries")
                     photo("trip-morocco", "Morocco - Desert", "photo of me next to a donkey")
                     photo("trip-greece-santorini", "Greece - Santorini", "photo of me with white houses in the background")
@@ -134,7 +137,7 @@ fun FlowContent.photo(imageId: String, title: String, altText: String) {
         a("images/trips/$imageId.jpg") {
             target = ATarget.blank
             img {
-                src = "images/trips/small/$imageId.jpg"
+                src = "images/trips/$imageId.jpg"
                 alt = altText
                 attributes["loading"] = "lazy"
             }
